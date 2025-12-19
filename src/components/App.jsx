@@ -1,5 +1,7 @@
 import React from "react";
 import ToDoItem from "./ToDoItem";
+import InputArea from "./InputArea";
+import Clear from "./Clear";
 
 function App() {
   const [item, setItem] = React.useState([]);
@@ -32,18 +34,7 @@ function App() {
       <div className="heading">
         <h1>To-Do List</h1>
       </div>
-      <div className="form">
-        <input
-          onChange={addItem}
-          type="text"
-          name="itemname"
-          value={input}
-          onKeyDown={handleKeyPress}
-        />
-        <button>
-          <span onClick={addInput}>Add</span>
-        </button>
-      </div>
+      <InputArea adItem={addItem} adInput={addInput} keyPress={handleKeyPress} inputText={input} />
       <div>
         <ul>
           {item.map((item) => (
@@ -51,11 +42,7 @@ function App() {
           ))}
         </ul>
       </div>
-      <div className="clear-wrapper">
-        <button className="clearBut" onClick={clearList}>
-          <span>clear</span>
-        </button>
-      </div>
+      <Clear cls={clearList}/>
     </div>
   );
 }
